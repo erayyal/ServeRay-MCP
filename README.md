@@ -48,6 +48,8 @@ make install-server SERVER=mssql-mcp
 
 If you prefer release binaries, download the archive for the specific server you want, verify the checksum, put the binary on `PATH`, copy its `.env.example`, and run it locally.
 
+First public release: [v0.1.0](https://github.com/erayyal/ServeRay-MCP/releases/tag/v0.1.0)
+
 These install commands assume the published module path remains `github.com/erayyal/serveray-mcp`. If the final GitHub owner changes, update `go.mod`, README examples, and release notes together.
 
 ## First Run
