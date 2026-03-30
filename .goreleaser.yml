@@ -1,0 +1,74 @@
+version: 2
+
+project_name: serveray-mcp
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: mssql-mcp
+    main: ./cmd/mssql-mcp
+    binary: mssql-mcp
+    flags: [-trimpath]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+  - id: postgres-mcp
+    main: ./cmd/postgres-mcp
+    binary: postgres-mcp
+    flags: [-trimpath]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+  - id: mysql-mcp
+    main: ./cmd/mysql-mcp
+    binary: mysql-mcp
+    flags: [-trimpath]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+  - id: github-mcp
+    main: ./cmd/github-mcp
+    binary: github-mcp
+    flags: [-trimpath]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+  - id: jira-mcp
+    main: ./cmd/jira-mcp
+    binary: jira-mcp
+    flags: [-trimpath]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+  - id: filesystem-mcp
+    main: ./cmd/filesystem-mcp
+    binary: filesystem-mcp
+    flags: [-trimpath]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+  - id: slack-mcp
+    main: ./cmd/slack-mcp
+    binary: slack-mcp
+    flags: [-trimpath]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+  - id: playwright-mcp
+    main: ./cmd/playwright-mcp
+    binary: playwright-mcp
+    flags: [-trimpath]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+
+archives:
+  - name_template: "{{ .Binary }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+
+checksum:
+  name_template: checksums.txt
+  algorithm: sha256
+
+snapshot:
+  version_template: "{{ .Version }}-snapshot"
+
+changelog:
+  sort: asc
